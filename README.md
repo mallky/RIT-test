@@ -2,7 +2,7 @@
 RIT Test Task
 
 # Start Project
-npm run install
+npm install
 npm run start
 
 #  Build
