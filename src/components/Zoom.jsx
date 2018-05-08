@@ -8,19 +8,21 @@ const mapDispatchToProps = {
 };
 
 @connect(null, mapDispatchToProps)
-export default class Zoom extends React.Component {
-  zoomPlus() {
+class Zoom extends React.Component {
+  zoomPlus () {
     this.props.zoomPlus();
   }
 
-  zoomMinus() {
+  zoomMinus () {
     this.props.zoomMinus();
   }
   
-  render() {
+  render () {
     return (<div className='zoom-btn'>
       <button onClick={this.zoomPlus.bind(this)}>+</button>
       <button onClick={this.zoomMinus.bind(this)}>&minus;</button>
     </div>)
   }
 }
+
+export default Zoom;

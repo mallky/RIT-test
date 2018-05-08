@@ -3,10 +3,11 @@ import utils from "../../../utils/utils";
 
 const initialState = {
   height: 331,
-  width: 237
+  width: 237,
+  items: []
 };
 
-const dataRed = (state = initialState, action) => {
+const dataRIT = (state = initialState, action) => {
   switch (action.type) {
 
     case types.ZOOM_PLUS:
@@ -24,13 +25,25 @@ const dataRed = (state = initialState, action) => {
       };
 
     case types.ADD_ITEM:
+      const items = [...state.items];
+      if (items.indexOf(action.item) === -1) {
+        items.push(action.item);
+      }
+
       return {
-        ...state
+        ...state,
+        items
       };
 
     case types.REMOVE_ITEM:
+      let newItems = [...state.items];
+
+      newItems = newItems.filter((item) => item !== action.item);
+      utils.removeSelection(action.item);
+
       return {
-        ...state
+        ...state,
+        items: newItems
       };
 
     default:
@@ -38,4 +51,4 @@ const dataRed = (state = initialState, action) => {
   }
 };
 
-export default dataRed;
+export default dataRIT;
