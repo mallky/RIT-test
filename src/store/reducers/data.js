@@ -1,23 +1,36 @@
-import * as types from "./../types/types";
+import * as types from "../types/types";
+import utils from "../../../utils/utils";
 
 const initialState = {
-  data: [],
-  expanded: {
-    id: null
-  },
-  currentDate: Math.round(+(new Date) / 1000),
-  fromDate: (new Date(2018, 0, 1)).valueOf()
+  height: 331,
+  width: 237
 };
 
 const dataRed = (state = initialState, action) => {
   switch (action.type) {
 
-    case types.ADD_DATA:
-      const data = action.data || state.data;
-
+    case types.ZOOM_PLUS:
       return {
         ...state,
-        data
+        height: state.width < utils.MAX_WIDTH ? state.height + utils.ZOOM_STEP : state.height,
+        width: state.width < utils.MAX_WIDTH ? state.width + utils.ZOOM_STEP : state.width
+      };
+
+    case types.ZOOM_MINUS:
+      return {
+        ...state,
+        height: state.width < utils.MIN_WIDTH ? state.height : state.height - utils.ZOOM_STEP,
+        width: state.width < utils.MIN_WIDTH ? state.width : state.width - utils.ZOOM_STEP
+      };
+
+    case types.ADD_ITEM:
+      return {
+        ...state
+      };
+
+    case types.REMOVE_ITEM:
+      return {
+        ...state
       };
 
     default:
