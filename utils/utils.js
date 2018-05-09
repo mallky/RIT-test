@@ -24,7 +24,7 @@ const getIdByName = (name) => {
 const removeSelection = (name) => {
   const id = getIdByName(name);
 
-  document.getElementById(id).classList.remove(SELECTED_CLASS);
+  document.getElementById(id).removeAttribute('class');
 }
 
 export default {

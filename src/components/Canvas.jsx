@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     addItem,
     openDialog
-}
+};
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Canvas extends React.Component {
@@ -23,14 +23,14 @@ class Canvas extends React.Component {
         const targetName = utils.getItemNameById(targetId);
 
         if (targetParent.tagName === 'g') {
-            targetParent.classList.add(utils.SELECTED_CLASS);
-        
+            targetParent.setAttribute('class', utils.SELECTED_CLASS);
+
             setTimeout(() => {
                 if (targetName) {
                     this.props.addItem(targetName);
                 } else {
                     this.props.openDialog();
-                    targetParent.classList.remove(utils.SELECTED_CLASS);
+                    targetParent.removeAttribute('class');
                 }
             }, utils.DELAY);
         }

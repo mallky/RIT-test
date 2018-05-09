@@ -6,9 +6,10 @@ import utils from '../../utils/utils.js';
 const mapStateToProps = (state) => ({
   isOpen: state.app.isOpen
 });
+
 const mapDispatchToProps = {
   closeDialog
-}
+};
 
 @connect(mapStateToProps, mapDispatchToProps)
 class List extends React.Component {
